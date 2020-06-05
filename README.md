@@ -3,16 +3,16 @@ A (small) zsh script to display coronavirus statistics, using the API from <http
 
 ## Usage:
 ```
-$ covid-19.zsh --help
-covid-19.zsh [all | usa]
-covid-19.zsh (--fatal | -f) XX [XX ...]
-covid-19.zsh (--loc | -l) XX [XX ...]
+$ covid-19 --help
+covid-19 [all | usa]
+covid-19 (--fatal | -f) XX [XX ...]
+covid-19 (--loc | -l) XX [XX ...]
 		where 'XX' is a valid ISO-3166-1 alpha-2 country code
-covid-19.zsh (--help | -h)
-covid-19.zsh (--version | -v)
+covid-19 (--help | -h)
+covid-19 (--version | -v)
 ```
 ### Main command
-`$ covid-19.zsh` returns:
+`$ covid-19` returns:
 ```
 ———————— COVID-19 STATUS ————————
 Confirmed Cases:        6,632,985
@@ -23,18 +23,21 @@ Fatality Rate:              34.0%
 Last updated: 01:47:58
 ```
 ### Fatality rates
-Use the `-f` or `--fatal` flag to get the global fatality rate [^1]
-`$ covid-19.zsh --fatal` or `$ covid-19.zsh -f` returns:
-```Fatality Rate (Global): 34.0%
+Use the `-f` or `--fatal` flag to get the global fatality rate[^1]
+
+`$ covid-19 --fatal` or `$ covid-19 -f` returns:
+```
+Fatality Rate (Global): 34.0%
 ```
 
 To get the fatality rate for a specific country, add the appropriate [ISO-3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements).
-`$ covid-19.zsh -f US` returns:
-```Fatality Rate (US): 18.2%
+`$ covid-19 -f US` returns:
+```
+Fatality Rate (US): 18.2%
 ```
 You can get the rates for more than one country by adding additional country codes (use `00` to include the global rate):
 
-`$ covid-19.zsh -f US Gb br 00 aq tR AF` returns:
+`$ covid-19 -f US Gb br 00 aq tR AF` returns:
 ```Fatality Rate (US): 18.2%
 Fatality Rate (GB): 97.1%
 Fatality Rate (BR): 100.%
@@ -52,7 +55,7 @@ Recovery counts for many countries are missing or undercounted (see issue [#161 
 
 To get statistics for a specific location, use the `-l` or `-loc` flag followed by the country code. As with fatality rates, you can add additional countries as arguments to get their statistics.
 
-`covid-19.zsh --loc US Gb br 00 aq tR AF` returns:
+`covid-19 --loc US Gb br 00 aq tR AF` returns:
 ```————— COVID-19 STATUS: (US) —————
 Confirmed Cases:        1,872,660
 Deaths:                   108,211
