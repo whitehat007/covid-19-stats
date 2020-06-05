@@ -23,7 +23,7 @@ Fatality Rate:              34.0%
 Last updated: 01:47:58
 ```
 ### Fatality rates
-Use the `-f` or `--fatal` flag to get the global fatality rate[^1]
+Use the `-f` or `--fatal` flag to get the global fatality rate [^1]
 `$ covid-19.zsh --fatal` or `$ covid-19.zsh -f` returns:
 ```Fatality Rate (Global): 34.0%
 ```
@@ -33,6 +33,7 @@ To get the fatality rate for a specific country, add the appropriate [ISO-3166-1
 ```Fatality Rate (US): 18.2%
 ```
 You can get the rates for more than one country by adding additional country codes (use `00` to include the global rate):
+
 `$ covid-19.zsh -f US Gb br 00 aq tR AF` returns:
 ```Fatality Rate (US): 18.2%
 Fatality Rate (GB): 97.1%
@@ -105,4 +106,4 @@ This script requires [jq](https://stedolan.github.io/jq/download/) and [curl](ht
 See [LICENSE.md](LICENSE.md) for the license. Please link to this repo somewhere in your project :).
 
 
-[^1] Calculated using `fatalities / (fatalities + recovered)` as per [WorldMeters.info](https://www.worldometers.info/coronavirus/coronavirus-death-rate/#correct) and the [American Journal of Epidemiology](https://academic.oup.com/aje/article/162/5/479/82647)
+[^1]: Calculated using `fatalities / (fatalities + recovered)` as per [WorldMeters.info](https://www.worldometers.info/coronavirus/coronavirus-death-rate/#correct) and the [American Journal of Epidemiology](https://academic.oup.com/aje/article/162/5/479/82647)
