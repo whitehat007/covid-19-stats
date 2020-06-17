@@ -38,14 +38,15 @@ Fatality Rate (US): 18.2%
 You can get the rates for more than one country by adding additional country codes (use `00` to include the global rate):
 
 `$ covid-19 -f US Gb br 00 aq tR AF` returns:
-```Fatality Rate (US): 18.2%
-Fatality Rate (GB): 97.1%
-Fatality Rate (BR): 100.%
-Fatality Rate (Global): 34.0%
-Fatality Rate (AQ): N/A
-Fatality Rate (TR): 3.39%
-Fatality Rate (AF): 15.9%
-
+```Fatality Rate (US):      16.6%
+Fatality Rate (GB):      97.0%
+Fatality Rate (BR):     4.90%*
+Fatality Rate (Global):  31.8%
+Fatality Rate (AQ):        N/A
+Fatality Rate (TR):      3.06%
+Fatality Rate (AF):      8.18%
+──────────────────────────────
+* Alt. fatality formula used
 Last updated: 12:33:03
 ```
 __IMPORTANT:__
@@ -56,50 +57,52 @@ Recovery counts for many countries are missing or undercounted (see issue [#161 
 To get statistics for a specific location, use the `-l` or `-loc` flag followed by the country code. As with fatality rates, you can add additional countries as arguments to get their statistics.
 
 `covid-19 --loc US Gb br 00 aq tR AF` returns:
-```————— COVID-19 STATUS: (US) —————
-Confirmed Cases:        1,872,660
-Deaths:                   108,211
-Recovered:                485,002
-Fatality Rate:              18.2%
+```───── COVID-19 STATUS: (US) ─────
+Confirmed Cases:        2,137,731
+Deaths:                   116,963
+Recovered:                583,503
+Fatality Rate:              16.6%
 
-————— COVID-19 STATUS: (GB) —————
-Confirmed Cases:          283,079
-Deaths:                    39,987
-Recovered:                  1,185
-Fatality Rate:              97.1%
+───── COVID-19 STATUS: (GB) ─────
+Confirmed Cases:          299,600
+Deaths:                    42,054
+Recovered:                  1,259
+Fatality Rate:              97.0%
 
-————— COVID-19 STATUS: (BR) —————
-Confirmed Cases:          614,941
-Deaths:                    34,021
+───── COVID-19 STATUS: (BR) ─────
+Confirmed Cases:          923,189
+Deaths:                    45,241
 Recovered:                      0
-Fatality Rate:              100.%
+Fatality Rate:             4.90%*
 
-———————— COVID-19 STATUS ————————
-Confirmed Cases:        6,632,985
-Deaths:                   391,136
-Recovered:                758,166
-Fatality Rate:              34.0%
+──────── COVID-19 STATUS ────────
+Confirmed Cases:        8,173,940
+Deaths:                   443,685
+Recovered:                950,238
+Fatality Rate:              31.8%
 
-————— COVID-19 STATUS: (AQ) —————
+───── COVID-19 STATUS: (AQ) ─────
 Confirmed Cases:                0
 Deaths:                         0
 Recovered:                      0
 Fatality Rate:                N/A
 
-————— COVID-19 STATUS: (TR) —————
-Confirmed Cases:          167,410
-Deaths:                     4,630
-Recovered:                131,778
-Fatality Rate:              3.39%
+───── COVID-19 STATUS: (TR) ─────
+Confirmed Cases:          181,298
+Deaths:                     4,842
+Recovered:                153,379
+Fatality Rate:              3.06%
 
-————— COVID-19 STATUS: (AF) —————
-Confirmed Cases:           18,054
-Deaths:                       300
-Recovered:                  1,585
-Fatality Rate:              15.9%
-—————————————————————————————————
+───── COVID-19 STATUS: (AF) ─────
+Confirmed Cases:           26,310
+Deaths:                       491
+Recovered:                  5,508
+Fatality Rate:              8.18%
+─────────────────────────────────
 Last updated: 12:40:24
 ```
+
+(See note above regarding fatality rates)
 
 ## Prerequisites
 This script requires [jq](https://stedolan.github.io/jq/download/) and [curl](https://curl.haxx.se/download.html). I've only tested this on macOS, but it *should* work on any *nix variants including Linux (although it may require a few tiny tweaks). You'll also need to have `zsh` installed for the interpreter to work properly.
@@ -109,4 +112,4 @@ This script requires [jq](https://stedolan.github.io/jq/download/) and [curl](ht
 See [LICENSE.md](LICENSE.md) for the license. Please link to this repo somewhere in your project :).
 
 
-[^1]: Calculated using `fatalities / (fatalities + recovered)` as per [WorldMeters.info](https://www.worldometers.info/coronavirus/coronavirus-death-rate/#correct) and the [American Journal of Epidemiology](https://academic.oup.com/aje/article/162/5/479/82647)
+[^1]: Calculated using `fatalities / (fatalities + recovered)` as per [WorldMeters.info](https://www.worldometers.info/coronavirus/coronavirus-death-rate/#correct) and the [American Journal of Epidemiology](https://academic.oup.com/aje/article/162/5/479/82647) For countries where there are no recorded recoveries, but there are recorded deaths (such as Brazil/`BR` in the example above), the alternative fatality formula of `cases / fatalities` is used and noted by an asterisk (`*`).
